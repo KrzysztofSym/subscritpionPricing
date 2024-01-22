@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 /*===== VARIABLES CSS =====*/
 
 :root {
@@ -112,6 +113,57 @@ img {
 /* animation: scaleUp 1s ease-in-out;
     transform-origin: center center; */
 
+    @keyframes fromTop {
+        from {
+            transform: translateY(-100vh);
+        }
+    
+        to {
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fromBottom {
+        from {
+            transform: translateY(100vh);
+        }
+    
+        to {
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fromLeft {
+        from {
+            transform: translateX(-100vw);
+        }
+    
+        to {
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes fromRight {
+        from {
+            transform: translateX(100vw);
+        }
+    
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes showUp {
+        from {
+            opacity: 0;
+        }
+    
+        to {
+            opacity: 1;
+        
+        }
+    }
+
 /*===== BUTTONS =====*/
 
 .btn {
@@ -156,6 +208,9 @@ body {
     border-radius: 10px;
     text-align: center;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    overflow: hidden;
+    animation: scaleUp 1s ease-in-out;
+    transform-origin: center center; 
 }
 
 input[type=radio] {
@@ -197,21 +252,35 @@ input[type=radio]:checked::before {
 }
 
 .highlight {
-            border: 2px solid red;
-        }
+    box-shadow: 0 0 0 1px var(--clr-acc-sec);
+}
 
 label {
     cursor: pointer;
     text-align: left;
     padding-left: 0.5rem;
-    border: 3px solid var(--clr-bg-main);
+    box-shadow: 0 0 0 3px var(--clr-bg-main);
     border-radius: 5px;
     padding: 1rem;
+    transition: .6s;
+    animation: 1s ease-in-out .7s backwards fromLeft;
+}
+
+label:last-of-type {
+    animation: 1s ease-in-out .7s backwards fromRight;
 }
 
 h1 {
+    font-family: "Merriweather", serif;
     margin: .5rem 0;
     font-size: 1.2rem;
+    animation: 1s ease-in-out .5s backwards fromTop;
+
+}
+
+ span:first-of-type {
+    display: inline-block;
+    animation: 1s ease-in-out .3s backwards fromTop;
 }
 
 label {
@@ -221,7 +290,7 @@ label {
 }
 
 label:not(:last-of-type) {
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
     margin-top: 1.5rem;
 }
 
@@ -260,12 +329,16 @@ label p {
     background-color: var(--clr-acc-pri);
     color: #fff;
     margin-top: 1.5rem;
+    animation: 1s ease-in-out 1s backwards fromBottom;
+
 }
 
 .btn:last-of-type {
     border: 2px solid var(--clr-bg-main);
     background: transparent;
     margin-top: .6rem;
+    animation: 1s ease-in-out 1.2s backwards fromBottom;
+
 }
 
 .btn:last-of-type img {
@@ -279,4 +352,6 @@ a {
     margin-top: 1.5rem;
     text-decoration: underline;
     color: var(--clr-acc-sec);
+    animation: 1s ease-in-out 1.7s backwards showUp;
+
 }
